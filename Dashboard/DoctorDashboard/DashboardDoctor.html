@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>DashboardDoctor</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link href="../../bootstrap-5.3.3-dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="../../bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="../../bootstrap-5.3.3-dist/js/">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+   
+</head>
+
+<body>
+    <style>
+        .nawqaslar_dizimi {
+            text-align: center;
+            background-color: #0d6efd !important;
+            color: white;
+        }
+
+        .nav_container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .img_menu_nav {
+            vertical-align: middle;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+        }
+
+        .menu_nav {
+            display: flex;
+            justify-content: center;
+        }
+
+        a {
+            color: #000;
+            text-decoration: none;
+        }
+
+        @media (max-width: 284px) {
+            .nav_container {
+                width: 100%;
+            }
+        }
+
+        .floating-window {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 300px;
+            display: none;
+        }
+
+        .content {
+            text-align: center;
+        }
+
+        .close-btn {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .close-btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Modal window css */
+        .modal-header {
+            background: #0d6efd;
+            color: #fff;
+        }
+
+        .modal-body form {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            padding: 0;
+        }
+
+        .modal-body form .imgholder {
+            width: 200px;
+            height: 200px;
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .imgholder .upload {
+            position: absolute;
+            bottom: 0;
+            left: 10;
+            width: 100%;
+            height: 100px;
+            background: rgba(0, 0, 0, 0.3);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .upload i {
+            color: #fff;
+            font-size: 35px;
+        }
+
+        .imgholder:hover .upload {
+            display: flex;
+        }
+
+        .imgholder .upload input {
+            display: none;
+        }
+
+        .modal-body form .inputField {
+            flex-basis: 68%;
+            border-left: 5px groove blue;
+            padding-left: 20px;
+        }
+
+        form .inputField>div {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        form .inputField>div label {
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+        #userForm form .inputField>div label::after {
+            content: "*";
+            color: red;
+        }
+
+        form .inputField>div input {
+            width: 75%;
+            padding: 10px;
+            border: none;
+            outline: none;
+            background: transparent;
+            border-bottom: 2px solid blue;
+        }
+
+        .modal-footer .submit {
+            font-size: 18px;
+        }
+
+
+        #readData form .inputField>div input {
+            color: #000;
+            font-size: 18px;
+        }
+
+        /* Modal window css */
+    </style>
+
+    <!-- Modal window Toltiriw -->
+    <div class="modal fade" id="userForm">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h4 class="modal-title">Fill the Form</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+
+                    <form action="#" id="myForm">
+
+                        <div class="card imgholder">
+                            <label for="imgInput" class="upload">
+                                <input type="file" name="" id="imgInput">
+                                <i class="bi bi-plus-circle-dotted"></i>
+                            </label>
+                            <img src="../../assets/img/doctors/doctors-4.jpg" alt="" width="200" height="200" class="img">
+                        </div>
+
+                        <div class="inputField">
+                            <div>
+                                <label for="name">FAÁ:</label>
+                                <input type="text" name="" id="name" required>
+                            </div>
+                            <div>
+                                <label for="age">Jası:</label>
+                                <input type="number" name="" id="age" required>
+                            </div>
+                            <div>
+                                <label for="address">Mánzil:</label>
+                                <input type="text" name="" id="city" required>
+                            </div>
+                            <div>
+                                <label for="phone">Telefon nomer:</label>
+                                <input type="text" name="" id="phone" minlength="11" maxlength="11" required>
+                            </div>
+                            <div>
+                                <label for="price">Bahası sumda:</label>
+                                <input type="number" name="" id="post" required>
+                            </div>
+                            <div>
+                                <label for="sDate">Start Date:</label>
+                                <input type="date" name="" id="sDate" required>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" form="myForm" class="btn btn-primary submit">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Read Data Modal-->
+    <div class="modal fade" id="readData">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h4 class="modal-title">Profile</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+
+                    <form action="#" id="myForm">
+
+                        <div class="card imgholder">
+                            <img src="./image/Profile Icon.webp" alt="" width="200" height="200" class="showImg">
+                        </div>
+
+                        <div class="inputField">
+                            <div>
+                                <label for="name">Name:</label>
+                                <input type="text" name="" id="showName" disabled>
+                            </div>
+                            <div>
+                                <label for="age">Age:</label>
+                                <input type="number" name="" id="showAge" disabled>
+                            </div>
+                            <div>
+                                <label for="city">City:</label>
+                                <input type="text" name="" id="showCity" disabled>
+                            </div>
+                            <div>
+                                <label for="email">E-mail:</label>
+                                <input type="email" name="" id="showEmail" disabled>
+                            </div>
+                            <div>
+                                <label for="phone">Number:</label>
+                                <input type="text" name="" id="showPhone" minlength="11" maxlength="11" disabled>
+                            </div>
+                            <div>
+                                <label for="post">Post:</label>
+                                <input type="text" name="" id="showPost" disabled>
+                            </div>
+                            <div>
+                                <label for="sDate">Start Date:</label>
+                                <input type="date" name="" id="showsDate" disabled>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal window Toltiriw -->
+
+    <div class="offcanvas offcanvas-end" id="demo">
+        <div class="offcanvas-header">
+            <h1 class="offcanvas-title">Menu</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul>
+                <li class="profile"> <a href="ProfilDoc.html">Profil sazlamalaı</a></li>
+                <li class="Sazlamalar"><a href="DizimiBolnoy.html">Nawqaslar dizimi</a></li>
+                <li class="ProfilSazlamalari"><a href="Rejelestiriw.html">Rejelestiriw</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container-fluid bg-primary text-white nav_container">
+        <div class="col-sm-9 md-8 p-5 text-center">
+            <h1>AQN shıpakerler ushın basqarıw sisteması</h1>
+        </div>
+        <img class="img_menu_nav" src="../../assets/img/doctors/doctors-1.jpg" alt="" data-bs-toggle="offcanvas"
+            data-bs-target="#demo">
+    </div>
+
+    <div class="container-fluid mt-5">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2 class="nawqaslar_dizimi">Nawqaslar dizimi</h2>
+                <br>
+                <input class="form-control" id="myInput" type="text" placeholder="Izlew..">
+                <br>
+
+                
+                <!-- Модальное окно для указания времени прихода -->
+                <div class="modal fade" id="arrivalTimeModal" tabindex="-1" role="dialog"
+                    aria-labelledby="arrivalTimeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="arrivalTimeModalLabel">
+                                    Укажите время прихода
+                                </h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <input type="time" class="form-control" id="arrivalTimeInput" />
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                    Закрыть
+                                </button>
+                                <button type="button" class="btn btn-primary" onclick="saveArrivalTime()">
+                                    Сохранить
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container mt-5">
+                    <table id="appointmentsTable" class="table">
+                        <thead>
+                            <tr>
+                                <th>Atı jóni</th>
+                                <th>Telefon nomeri</th>
+                                <th>Waqtı</th>
+                                <th>Shıpaker</th>
+                                <th>Status</th>
+                                <th>Keliw waqtı</th>
+                                <th>Statustı ózgertiw</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="../../public/JSONserver.js"></script>
+    <script src="../../public/registration.js"></script>
+
+    <script type="text/javascript">
+
+        document.addEventListener("DOMContentLoaded", function () {
+            var floatingWindow = document.querySelector(".floating-window");
+            var closeBtn = document.querySelector(".close-btn");
+
+            // Show the floating window
+            floatingWindow.style.display = "block";
+
+            // Close the floating window when close button is clicked
+            closeBtn.addEventListener("click", function () {
+                floatingWindow.style.display = "none";
+            });
+        });
+
+        // Modal window js
+        src = "https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity = "sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin = "anonymous"
+        // Modal window js
+
+        // Find searchtable
+        $(document).ready(function () {
+            $("#myInput").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#myTable tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+
+    </script>
+</body>
+
+</html>

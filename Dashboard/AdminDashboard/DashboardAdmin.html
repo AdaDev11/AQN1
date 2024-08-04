@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="../../bootstrap-5.3.3-dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="../../bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="/bootstrap-5.3.3/js/">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+    <style>
+        .nav_container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .img_menu_nav {
+            vertical-align: middle;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+        }
+
+        .menu_nav {
+            display: flex;
+            justify-content: center;
+        }
+
+        a {
+            color: #000;
+            text-decoration: none;
+        }
+
+        @media (max-width: 284px) {
+            .nav_container {
+                width: 100%;
+            }
+        }
+
+        /* Analytics */
+
+        .analytics {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 2rem;
+            margin-top: .5rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            box-shadow: 0px 5px 5px -5px rgb(0 0 0 / 10%);
+            background: #fff;
+            padding: 1rem;
+            border-radius: 3px;
+        }
+
+        .card-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .card-head h2 {
+            color: #333;
+            font-size: 1.8rem;
+            font-weight: 500;
+        }
+
+        .card-head span {
+            font-size: 3.2rem;
+            color: var(--text-grey);
+        }
+
+        .card-progress small {
+            color: #777;
+            font-size: .8rem;
+            font-weight: 600;
+        }
+
+        .card-indicator {
+            margin: .7rem 0rem;
+            height: 10px;
+            border-radius: 4px;
+            background: #e9edf2;
+            overflow: hidden;
+        }
+
+        .indicator {
+            height: 10px;
+            border-radius: 4px;
+        }
+
+        .indicator.one {
+            background: #22baa0;
+        }
+
+        .indicator.two {
+            background: #11a8c3;
+        }
+
+        .indicator.three {
+            background: #f6d433;
+        }
+
+        .indicator.four {
+            background: #f25656;
+        }
+
+        .records {
+            box-shadow: 0px 5px 5px -5px rgb(0 0 0 / 10%);
+            background: #fff;
+            border-radius: 3px;
+        }
+
+        
+@media only screen and (max-width: 1200px) {
+    .analytics {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .analytics {
+        grid-template-columns: 100%;
+    }
+}
+        /* Analitics */
+    </style>
+
+    <div class="offcanvas offcanvas-end" id="demo">
+        <div class="offcanvas-header">
+            <h1 class="offcanvas-title">Menu</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul>
+                <li class="profile"> <a href="ProfilAdmin.html">Profil sazlamalaı</a></li>
+                <li class="Sazlamalar"><a href="DoctorsDizim.html">Shıpakerler dizimi</a></li>
+                <li class="Sazlamalar"><a href="BolnoyDizim.html">Nawqaslar dizimi</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <div class="container-fluid bg-primary text-white nav_container">
+        <div class="col-sm-9 md-8 p-5 text-center">
+            <h1>AQN admini ushın basqarıw sisteması</h1>
+        </div>
+        <img class="img_menu_nav" src="img/1.jpeg" alt="" data-bs-toggle="offcanvas"
+            data-bs-target="#demo">
+    </div>
+    <!-- Header -->
+
+    <!-- Container -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="analytics">
+                    <div class="card">
+                        <div class="card-head">
+                            <h2>107,200</h2>
+                            <span class="las la-user-friends"></span>
+                        </div>
+                        <div class="card-progress">
+                            <small>Paydalanıw aktivligi ayına</small>
+                            <div class="card-indicator">
+                                <div class="indicator one" style="width: 60%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-head">
+                            <h2>340,230</h2>
+                            <span class="las la-eye"></span>
+                        </div>
+                        <div class="card-progress">
+                            <small>Platformanı kórgenler sanı</small>
+                            <div class="card-indicator">
+                                <div class="indicator two" style="width: 80%"></div>
+                            </div>
+                        </div>
+                    </div>     
+                    <div class="card">
+                        <div class="card-head">
+                            <h2>$653,200</h2>
+                            <span class="las la-shopping-cart"></span>
+                        </div>
+                        <div class="card-progress">
+                            <small>Aylıq dáramat asıwı</small>
+                            <div class="card-indicator">
+                                <div class="indicator three" style="width: 65%"></div>
+                            </div>
+                        </div>
+                    </div>       
+                    <div class="card">
+                        <div class="card-head">
+                            <h2>47,500</h2>
+                            <span class="las la-envelope"></span>
+                        </div>
+                        <div class="card-progress">
+                            <small>Jańa elektron pochta xabarları</small>
+                            <div class="card-indicator">
+                                <div class="indicator four" style="width: 90%"></div>
+                            </div>
+                        </div>
+                    </div>       
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Container -->
+
+</body>
+</html>
